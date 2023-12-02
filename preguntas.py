@@ -64,11 +64,11 @@ def pregunta_01():
     En esta función se realiza la carga de datos.
     """
     # Lea el archivo `mushrooms.csv` y asignelo al DataFrame `df`
-    df = pd.read_csv('mushrooms.csv')
+    df = pd.read_csv("mushrooms.csv", sep=",")
 
     # Remueva la columna `veil-type` del DataFrame `df`.
     # Esta columna tiene un valor constante y no sirve para la detección de hongos.
-    df.drop('veil-type', axis=1, inplace=True)
+    df.pop("veil_type")
 
     # Asigne la columna `type` a la variable `y`.
     y = df['type']
@@ -77,7 +77,7 @@ def pregunta_01():
     X = df.copy()
 
     # Remueva la columna `type` del DataFrame `X`.
-    X.drop('type', axis=1, inplace=True)
+    X.pop('type')
 
     # Retorne `X` y `y`
     return X, y
@@ -99,7 +99,7 @@ def pregunta_02():
     (X_train, X_test, y_train, y_test,) = train_test_split(
         X,
         y,
-        test_size=0.2,
+        test_size=(50/X.shape[0]),
         random_state=123,
     )
 
